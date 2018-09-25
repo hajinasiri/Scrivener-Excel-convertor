@@ -1,0 +1,26 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <!-- loading lodash for parse function -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/2.4.1/lodash.min.js"></script>
+  <script> _= _.noConflict(); //calling lodash _</script>
+
+  <!-- Excel generating code -->
+  <script type="text/javascript" src="excel_functions/jszip.js"></script>
+  <script type="text/javascript" src="excel_functions/FileSaver.js"></script>
+  <script type="text/javascript" src="excel_functions/myexcel.js"></script>
+
+  <!-- main JS files -->
+  <script src="convertor.js"></script>
+  <script src="functions.js"></script>
+  <meta charset="utf-8">
+
+  <title>The HTML5 Herald</title>
+</head>
+
+<body>
+  <input type="file" id="fileinput" multiple webkitdirectory />
+
+</body>
+</html>

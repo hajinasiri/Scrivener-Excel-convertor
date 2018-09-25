@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CompileSettings Template="Yes">
+    <FormatSettings>
+        <Format ID="DEFAULT">
+            <SectionLayouts>
+                <Type ID="7E3985A6-F9F3-4DED-A248-89AC9590A390">NEW-PAGE-HEADER-WITH-TEXT</Type>
+                <Type ID="55B5FD99-8945-493D-BA1C-82F311998CCE">TEXT-SECTION</Type>
+            </SectionLayouts>
+        </Format>
+        <Format ID="2085D686-8846-410F-924B-D795E9663871">
+            <SectionLayouts>
+                <Type ID="7E3985A6-F9F3-4DED-A248-89AC9590A390">DE066211-2342-42CD-89F4-13840F9C12CB</Type>
+                <Type ID="E6FABED1-B194-4FC3-AC15-6AA97C33DD7B">AS-IS</Type>
+                <Type ID="55B5FD99-8945-493D-BA1C-82F311998CCE">73659895-36CB-41C3-92F2-7E26836B6618</Type>
+            </SectionLayouts>
+        </Format>
+    </FormatSettings>
+    <CurrentFileType>txt</CurrentFileType>
+    <LastUsedFormats>
+        <Print>2085D686-8846-410F-924B-D795E9663871</Print>
+        <txt>2085D686-8846-410F-924B-D795E9663871</txt>
+    </LastUsedFormats>
+</CompileSettings>

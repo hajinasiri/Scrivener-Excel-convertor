@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ScrivenerProject Identifier="8C9AF9D5-A46A-49D3-9484-B4BB7956232E" Version="2.0" Creator="SCRMAC-3.0.3-3032" Device="MacBook-Air-24791" Author="Shahab" Modified="2018-09-21 17:41:16 -0700" ModID="AAFACE00-544A-4BB6-A563-AF5F2DA83094">
+    <Binder>
+        <Map></Map>
+        <BinderItem UUID="4152ECB9-1B68-4561-BF84-63DC9B29E632" Type="DraftFolder" Created="2018-07-12 08:53:34 -0700" Modified="2018-08-08 07:43:17 -0700">
+            <Title>Not Map</Title>
+            <MetaData>
+                <IconFileName>Book (Blue Book).tiff</IconFileName>
+            </MetaData>
+            <CorkboardAndOutliner>
+                <SelectedSubdocumentUUIDs></SelectedSubdocumentUUIDs>
+                <OutlinerExpandedState>
+                    <ItemID>BA335614-C0B7-4345-9823-8E2CE6A3520C</ItemID>
+                </OutlinerExpandedState>
+            </CorkboardAndOutliner>
+        </BinderItem>
+        <BinderItem UUID="73EA1F1C-6A12-4622-A943-593112F9A9EF" Type="ResearchFolder" Created="2018-07-12 08:53:34 -0700" Modified="2018-07-12 08:53:34 -0700">
+            <Title>Research</Title>
+        </BinderItem>
+        <BinderItem UUID="F87A7582-77FA-40D8-922E-E9659820041E" Type="TrashFolder" Created="2018-07-12 08:53:34 -0700" Modified="2018-07-12 08:53:34 -0700">
+            <Title>Trash</Title>
+            <Children>
+                <BinderItem UUID="0A36851C-A1A6-4919-BBB5-552115738D38" Type="Text" Created="2018-08-23 06:43:19 -0700" Modified="2018-08-23 06:43:19 -0700">
+                    <MetaData>
+                        <IncludeInCompile>Yes</IncludeInCompile>
+                    </MetaData>
+                    <TextSettings>
+                        <TextSelection>0,0</TextSelection>
+                    </TextSettings>
+                </BinderItem>
+                <BinderItem UUID="E6423C28-EBD5-4414-88C4-C6409304DD78" Type="Text" Created="2018-08-23 06:43:58 -0700" Modified="2018-08-23 06:43:58 -0700">
+                    <MetaData>
+                        <IncludeInCompile>Yes</IncludeInCompile>
+                    </MetaData>
+                    <TextSettings>
+                        <TextSelection>0,0</TextSelection>
+                    </TextSettings>
+                </BinderItem>
+                <BinderItem UUID="6045F042-7D55-42FE-ACA9-BE700F575EAE" Type="Text" Created="2018-08-23 06:45:07 -0700" Modified="2018-08-23 06:45:07 -0700">
+                    <MetaData>
+                        <IncludeInCompile>Yes</IncludeInCompile>
+                    </MetaData>
+                    <TextSettings>
+                        <TextSelection>0,0</TextSelection>
+                    </TextSettings>
+                </BinderItem>
+            </Children>
+        </BinderItem>
+    </Binder>
+    <Collections>
+        <Collection Type="Binder" ID="CA494999-6FBA-4705-A866-6A01D2762CBF" Color="0.924849 0.924014 0.949681">
+            <Title>Binder</Title>
+        </Collection>
+        <Collection Type="RecentSearch" ID="ACE667ED-F3EB-4C88-B2BA-0FE519EDF4FD" Color="0.922176 0.818589 0.999618">
+            <Title>Search Results</Title>
+            <SearchSettings Operator="Any" Type="All" CaseSensitive="No" IgnoreDiacritics="No">Updated</SearchSettings>
+        </Collection>
+        <Collection Type="Arbitrary" ID="49501E5E-21A9-432B-ACC1-1F22A4AB8AF4" Color="0.870039 0.935409 0.840238">
+            <Title>Interim Report</Title>
+        </Collection>
+        <Collection Type="Arbitrary" ID="3E20F5CB-FC5A-4B6E-B3EE-DD37A7400198" Color="0.777127 0.86949 0.916106">
+            <Title>Prospectus</Title>
+            <BinderUUIDs>734AE735-C270-4550-862E-891E8BBF4402,174A90F1-60EF-44D2-8749-774EC83E527E,19F0AF40-299A-4613-A528-4D9D1653BF60</BinderUUIDs>
+        </Collection>
+        <Collection Type="Arbitrary" ID="A207004A-D703-4F0F-80E3-6FD174B3C4A5" Color="0.992004 0.973007 0.768994">
+            <Title>Updated Documents</Title>
+        </Collection>
+    </Collections>
+    <Keywords></Keywords>
+    <SectionTypes>
+        <TypeDefinitions>
+            <Type ID="7E3985A6-F9F3-4DED-A248-89AC9590A390">Heading</Type>
+            <Type ID="E6FABED1-B194-4FC3-AC15-6AA97C33DD7B">Sub-Heading</Type>
+            <Type ID="55B5FD99-8945-493D-BA1C-82F311998CCE">Section</Type>
+        </TypeDefinitions>
+        <LevelTypes>
+            <Folders>
+                <Type>7E3985A6-F9F3-4DED-A248-89AC9590A390</Type>
+            </Folders>
+            <Containers>
+                <Type>55B5FD99-8945-493D-BA1C-82F311998CCE</Type>
+            </Containers>
+            <Files>
+                <Type>55B5FD99-8945-493D-BA1C-82F311998CCE</Type>
+            </Files>
+        </LevelTypes>
+    </SectionTypes>
+    <LabelSettings>
+        <Title>Label</Title>
+        <DefaultLabelID>-1</DefaultLabelID>
+        <Labels>
+            <Label ID="-1">No Label</Label>
+            <Label ID="1" Color="0.993495 0.701207 0.732587">Updated</Label>
+        </Labels>
+    </LabelSettings>
+    <StatusSettings>
+        <Title>Status</Title>
+        <DefaultStatusID>-1</DefaultStatusID>
+        <StatusItems>
+            <Status ID="-1">No Status</Status>
+            <Status ID="0">To Do</Status>
+            <Status ID="1">First Draft</Status>
+            <Status ID="2">Revised Draft</Status>
+            <Status ID="3">Final Draft</Status>
+            <Status ID="4">Done</Status>
+            <Status ID="5">NEW</Status>
+            <Status ID="6">Started</Status>
+            <Status ID="7">Revised</Status>
+        </StatusItems>
+    </StatusSettings>
+    <CustomMetaDataSettings></CustomMetaDataSettings>
+    <ProjectTargets Notify="No">
+        <DraftTarget Type="Words" CountIncludedOnly="Yes" CurrentCompileGroupOnly="No" Deadline="2012-09-17 10:22:06 -0700" IgnoreDeadline="Yes">0</DraftTarget>
+        <SessionTarget Type="Words" CountDraftOnly="Yes" AllowNegatives="Yes" ResetType="Time" ResetTime="00:00" DeterminedFromDeadline="No" WritingDays="" CanWriteOnDeadlineDate="No">0</SessionTarget>
+        <PreviousSession Words="0" Characters="0" Date="2018-09-21 17:40:46 -0700"></PreviousSession>
+    </ProjectTargets>
+    <RecentWritingHistory Date="2018-09-21 00:00:00 -0700">
+        <DraftWordCount>0</DraftWordCount>
+        <DraftCharCount>0</DraftCharCount>
+        <OtherWordCount>0</OtherWordCount>
+        <OtherCharCount>4</OtherCharCount>
+    </RecentWritingHistory>
+    <PrintSettings PaperSize="612.0,792.0" LeftMargin="72.0" RightMargin="72.0" TopMargin="90.0" BottomMargin="90.0" PaperType="na-letter" Orientation="Portrait" HorizontalPagination="Clip" VerticalPagination="Auto" ScaleFactor="1.0" HorizontallyCentered="Yes" VerticallyCentered="Yes" Collates="Yes" PagesAcross="1" PagesDown="1"></PrintSettings>
+</ScrivenerProject>
