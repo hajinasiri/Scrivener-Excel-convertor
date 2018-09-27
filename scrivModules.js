@@ -190,7 +190,7 @@ function fixShort(result,uno){
   var element2 = result[1][index];
   if(!element2.shortdescription){//if short description is empty sets tooltip to '0'.
     result[1][index].tooltip = '0';
-    result[0][index].tooltip = '0';
+    // result[0][index].tooltip = '0';
   }
   return result
   })
@@ -296,7 +296,7 @@ function getShort(files,target,row,column,result){
     var path = files.substr(0,files.lastIndexOf('/'))+ '/Files/Data/' + UUID +'/synopsis.txt';//building address of the synopsis.txt
     if (fs.existsSync(path)) {//if the synopsis.txt exests
       var text = fs.readFileSync(path).toString('utf-8');//This line reads the synopsis.txt
-      // text = cleanSpace(text);
+      text = cleanSpace(text);
       result[0][row - 2].shortdescription = text;//This puts text inside result element 0 as shortdescription
       result[1][row - 2].shortdescription = text;//This puts text inside result element 1 as shortdescription
     }
