@@ -22,11 +22,11 @@ if(f === "u"){
 }
 
 
-
 if(update){
+
   var scriv = scrivPath.substr(0,scrivPath.lastIndexOf('scriv'))
   scriv = scriv.substr(0,scriv.lastIndexOf('/')) + '/updated';
-  scriv += scrivPath.substr(scrivPath.lastIndexOf('/') + 1,scrivPath.indexOf('scriv'));
+  scriv += scrivPath.substr(scrivPath.lastIndexOf('/') + 1,scrivPath.lastIndexOf('scriv'));
   var fileName = scriv.substr(scriv.lastIndexOf('/'), scriv.length) + 'x';
   var scrivx =scriv +fileName; //builds the destination path for scrivx file
   // console.log('scriv',scriv)
