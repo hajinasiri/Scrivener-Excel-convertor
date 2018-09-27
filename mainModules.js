@@ -44,12 +44,12 @@ function main(f,checker) {
         MapArray = element;
       }else if(element.Title[0] === 'config.json'){//finds config and pust it in config variable
         config = element;
-      }else if(element.Title[0] === 'map.html'){
+      }else if(element.Title[0] === 'story.html'){
+        storyUUID = element.$.UUID
+      }else if(element.Title[0].indexOf('.html') > 0){
         mapHtmlUUID = element.$.UUID;
       }else if(element.Title[0] === 'map.css'){
         mapCssUUID = element.$.UUID
-      }else if(element.Title[0] === 'story.html'){
-        storyUUID = element.$.UUID
       }
     });
 
