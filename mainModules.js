@@ -1,3 +1,4 @@
+//This is the file that contains main function for scrivToExcel file
 var parseString = require('xml2js').parseString;
 var fs = require("fs");
 require('log-timestamp');
