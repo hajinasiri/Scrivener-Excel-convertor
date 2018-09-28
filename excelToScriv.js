@@ -120,6 +120,7 @@ function buildMap(excel,keywords){
     if(match){//if there is a match then check if anything has changed
       rows = checkMatch(index,6,match,'shortdescription',l,rows);//checks if shortDescription has changed and updates it;
       rows = checkMatch(index,7,match,'longdescription',l,rows);//checks if longDescription has changed and updates it;
+      rows = checkMatch(index,1,match,'label',l,rows);
       rows = getMeta(index,rows,match);
     }
     if(index > 0){//index 0 is the first row in excel that contains column titles
