@@ -5,7 +5,7 @@ require('log-timestamp');
 var modules = require('./scrivModules');
 
 
-function main(f,checker) {
+function main(f,checker,render) {
   var n = f.lastIndexOf('/');
   var res = f.substr(n, f.length);
   f = f + res+'x';
@@ -58,8 +58,9 @@ function main(f,checker) {
     XML = addToXML(MapArray,[],XML);//adds map object to the final xml
     buildXML(MapArray,XML);//builds the desirable xml format from MapArray
     output.Binder = [XML];//sets the output.Binder to an array with XML inside
-    finalResult = modules.createExcel(f,output,checker);//creates the excel file from the final desirable xml format that is stored in output
+    finalResult = modules.createExcel(f,output,checker,render);//creates the excel file from the final desirable xml format that is stored in output
     //the 'yes' determins that the function will create the excel file, otherwise it will just return finalResult
+    //"render" determins if render ready excel file should be created
     modules.findDuplicates(finalResult);//checks if there are duplicate ids and prints out a warning if there are any
     if(checker === 'yes'){//This checker is added to make it possible to use main function as a module in comparison file
       modules.createStory(finalResult[1],f,storyUUID);

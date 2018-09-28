@@ -4,33 +4,28 @@ var fs = require('fs');
 var ncp = require('ncp').ncp; //Module to copy folders
 var dateTime = require('node-datetime');//Module for getting dateTime
 
-
 var scrivModule = require('./mainModules.js')
-
 
 // var f = "/Users/shahab/lighthouse/scriv/render3/GenderFinance4.9test.xlsx";
 var f = process.argv[2];//reads the file address from user input in terminal
-var update = false
+var update = false;
 var result =[];
 if(f === "u"){
   update = true;
     // var f = "/Users/shahab/lighthouse/scriv/render3/render0.3.scriv";
   var excelPath = process.argv[3];
   var scrivPath = process.argv[4];
-  result = scrivModule.main(scrivPath,'No')[0];//puts the scriv file in an array and puts it in 'result' variable. "No" determins that no excel file needs to be created
+  result = scrivModule.main(scrivPath,'No',false)[0];//puts the scriv file in an array and puts it in 'result' variable. "No" determins that no excel file needs to be created
+  //"false" determins that the render ready excel file doesn't need to be created
   f = excelPath;
 }
 
-
 if(update){
-
   var scriv = scrivPath.substr(0,scrivPath.lastIndexOf('scriv'))
   scriv = scriv.substr(0,scriv.lastIndexOf('/')) + '/updated';
   scriv += scrivPath.substr(scrivPath.lastIndexOf('/') + 1,scrivPath.lastIndexOf('scriv'));
   var fileName = scriv.substr(scriv.lastIndexOf('/'), scriv.length) + 'x';
   var scrivx =scriv +fileName; //builds the destination path for scrivx file
-  // console.log('scriv',scriv)
-  // console.log('scrivx',scrivx)
 }else{
   var scriv = f.substr(0,f.indexOf('xlsx')) + 'scriv'; //builds the destination path for scriv file
   var fileName = scriv.substr(scriv.lastIndexOf('/'), scriv.length) + 'x';

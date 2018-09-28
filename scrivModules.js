@@ -1,8 +1,8 @@
 var excel4node = require('excel4node'); //initiates excel file
 var fs = require("fs");
 
-function createExcel(files,XML,checker){//fetches data from XML, Uses addElement function to add the data to excel file. addElement function itself
-  //uses propagate function to make child inherit MetaData from their parent
+function createExcel(files,XML,checker,render){//fetches data from XML, Uses addElement function to add the data to excel file. addElement function itself
+  //uses propagate function to make child inherit MetaData from their parent. "render" determins if render ready excel file should be created
   var result =[[],[]];
 
   var Binder;
@@ -41,10 +41,37 @@ function createExcel(files,XML,checker){//fetches data from XML, Uses addElement
   })
 
   var path = files.substr(0,files.lastIndexOf('.scriv'))//Getting rid of the scrivx file in the path
-  path = path.substr(0,path.lastIndexOf('.scriv'))+ '.xlsx';//building address for excel file
+  var filePath = path.substr(0,path.lastIndexOf('.scriv'));
+  path = filePath + '.xlsx';//building address for excel file
   if(checker === 'yes'){//if the checker is 'yes', then the function creates the excel file, otherwise it will just returns finalResult
     workbook.write(path);; //generates the excel file. Uses setTime to let async readSingleFile function inside getText function read the rtf files and add them to the excel.
   }
+
+  if(render){//the following lines create render ready excel file
+    var workbook2 = new excel4node.Workbook();
+    var render = workbook2.addWorksheet('Structure');//Setting the sheet name
+    const hardCoded = ['rowNumber','label','id','parent','classes','subtitle','unoFrom','unoTo','render','symbol','location','xpos','ypos','xsize',
+    'ysize','xoffset','yoffset'];
+
+    hardCoded.forEach(function(element,index){//This loop puts all the uno metaData Titles from uno array into the excel file
+      render.cell(1,1+index).string(element);
+    });
+
+    var renderUno = hardCoded.map(a => a.toLowerCase());
+
+    result[1].forEach(function(element,index){
+      render.cell(index + 2,1).number(index + 2);//puts the numbers in "Number" column in the excel file
+      renderUno.forEach(function(unoElement,unoIndex){
+        if(element[unoElement]){
+          render.cell(index+2,unoIndex+1).string(element[unoElement].toString());
+        }
+      })
+    })
+    var renderPath = filePath + '-Render.xlsx';
+    workbook2.write(renderPath);
+  }
+
+
   return result
 }
 
@@ -190,7 +217,7 @@ function fixShort(result,uno){
   var element2 = result[1][index];
   if(!element2.shortdescription){//if short description is empty sets tooltip to '0'.
     result[1][index].tooltip = '0';
-    // result[0][index].tooltip = '0';
+    result[0][index].tooltip = '0';
   }
   return result
   })
