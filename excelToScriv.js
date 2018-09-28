@@ -1,4 +1,3 @@
-//testing the rpository
 var xlsx = require('node-xlsx');
 var fs = require('fs');
 var ncp = require('ncp').ncp; //Module to copy folders
