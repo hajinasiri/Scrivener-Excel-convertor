@@ -14,8 +14,10 @@ if(f === "u"){
     // var f = "/Users/shahab/lighthouse/scriv/render3/render0.3.scriv";
   var excelPath = process.argv[3];
   var scrivPath = process.argv[4];
-  result = scrivModule.main(scrivPath,'No',false)[0];//puts the scriv file in an array and puts it in 'result' variable. "No" determins that no excel file needs to be created
-  //"false" determins that the render ready excel file doesn't need to be created
+  result = scrivModule.main(scrivPath,'No',false,false)[0];//puts the scriv file in an array and puts it in 'result' variable. "No" determins that no excel file needs to be created
+  //first "false" determins that the render ready excel file doesn't need to be created
+  //Second "false" determins that the user does not want anchor in story.html. It really doesn't matter here, becase the first false doesn't let
+  //story.html even to be created
   f = excelPath;
 }
 

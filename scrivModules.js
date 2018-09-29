@@ -531,7 +531,7 @@ function createHtml(UUID,fileTitle,f){//gets the title of the file that needs to
   }
 }
 
-function createStory(finalResult,f,UUID){
+function createStory(finalResult,f,UUID,noAnchor){
   // story,html code and animation
 
   var storyData = "";
@@ -586,9 +586,16 @@ function createStory(finalResult,f,UUID){
         }
       });
       if(hasChildren){
-        storyData += "<h"+element.outlinelevel+" class='storyHead storyHead"+element.outlinelevel.toString().padStart(2, '0')+
-        "'> <button aria-expanded='false'><i class='icon-right-dir'></i><i class='icon-down-dir'></i>"+element.title+"</row></button></h"+
-        element.outlinelevel+"><div hidden>"
+        if(noAnchor){
+          storyData += "<h"+element.outlinelevel+" class='storyHead storyHead"+element.outlinelevel.toString().padStart(2, '0')+
+          "'> <button aria-expanded='false'><i class='icon-right-dir'></i><i class='icon-down-dir'></i>"+element.title+"</row></button></h"+
+          element.outlinelevel+"><div hidden>";
+        }else{
+
+          storyData += "<h"+element.outlinelevel+" class='storyHead storyHead"+element.outlinelevel.toString().padStart(2, '0')+
+          "'> <a href='#/?+++&unoInfo=" + element.id + "' class=\"slide\"> <button aria-expanded='false'><i class='icon-right-dir'></i><i class='icon-down-dir'></i>"
+          +element.title+"</row></button></a></h" + element.outlinelevel+"><div hidden>";
+        }
       }else{
         storyData += '<a href='+"'"+"#/?"+(element.slideurl? element.slideurl:"");
         if(element.longdescription){

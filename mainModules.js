@@ -5,8 +5,8 @@ require('log-timestamp');
 
 var modules = require('./scrivModules');
 
-
-function main(f,checker,render) {
+function main(f,checker,render,noAnchor) {//This function builds the desirable xml format for the other functions, Then calls the needed functions
+  //creaete excel file, story.html file, index.html file, map.css file and also the function to find the unos with duplicate ids
   var n = f.lastIndexOf('/');
   var res = f.substr(n, f.length);
   f = f + res+'x';
@@ -64,7 +64,7 @@ function main(f,checker,render) {
     //"render" determins if render ready excel file should be created
     modules.findDuplicates(finalResult);//checks if there are duplicate ids and prints out a warning if there are any
     if(checker === 'yes'){//This checker is added to make it possible to use main function as a module in comparison file
-      modules.createStory(finalResult[1],f,storyUUID);
+      modules.createStory(finalResult[1],f,storyUUID,noAnchor);//"anchor" is boolean and determins that if the user wants anchor tag or not
       modules.createHtml(mapHtmlUUID,'index.html',f);
       modules.createHtml(mapCssUUID,'map.css',f);
       var configObject = modules.createConfig(f,config);//creates the confing.json file
@@ -73,7 +73,7 @@ function main(f,checker,render) {
 return finalResult
 }
 
-module.exports = {main};
+
 
 
 
@@ -169,3 +169,4 @@ function addToXML(target,counter,XML){
   return XML
 }
 
+module.exports = {main};
