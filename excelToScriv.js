@@ -106,22 +106,22 @@ function buildMap(excel,keywords){
   var mapStr = '';
   var match = '';
   var rows = excel[0].data;
-
+  // console.log('****',rows[0][36]);
   var l = rows[0].length; //this stores the length of the rows, so later l can be used to add labelID to the row if needed
 
   rows.forEach(function(row,index){
 
 
     result.forEach(function(element){//finds the matching row in the array built from scriv file and puts it in variable 'match'
-
       if(row[2] === element.id){
         match = element;
       }
     });
     if(match){//if there is a match then check if anything has changed
-      rows = checkMatch(index,6,match,'shortdescription',l,rows);//checks if shortDescription has changed and updates it;
-      rows = checkMatch(index,7,match,'longdescription',l,rows);//checks if longDescription has changed and updates it;
-      rows = checkMatch(index,1,match,'label',l,rows);
+      rows = checkMatch(index,match,'shortdescription',l,rows);//checks if shortDescription has changed and updates it;
+      rows = checkMatch(index,match,'longdescription',l,rows);//checks if longDescription has changed and updates it;
+      rows = checkMatch(index,match,'label',l,rows);
+      rows = checkMatch(index,match,'slideurl',l,rows);
       rows = getMeta(index,rows,match);
     }
     if(index > 0){//index 0 is the first row in excel that contains column titles
@@ -152,8 +152,11 @@ function getMeta(index,rows,match){
   }
   return rows
 }
-function checkMatch(index,columnNumber,match,columnDescription,l,rows){//finds the matching uno in excel and scrivener and does updating
+function checkMatch(index,match,columnDescription,l,rows){//finds the matching uno in excel and scrivener and does updating
   var row = rows[index];
+  var columns = rows[0];//builds the column title array
+  columns = columns.map(a => a.toLowerCase()); //converts column titles to lower case
+  var columnNumber = columns.indexOf(columnDescription);//finds the column number of columnDescription
   var excelUno = row[columnNumber];
   if(excelUno){excelUno = clean(excelUno)}
   var scrivUno = match[columnDescription];
