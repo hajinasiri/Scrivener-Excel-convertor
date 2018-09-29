@@ -78,7 +78,7 @@ function createExcel(files,XML,checker,render){//fetches data from XML, Uses add
 
 function initialize(excel,XML){ //initializes the MetaData columns inside excel file
 
-  var hardCoded = ['rowNumber','label','id','parent','outlineNumber','outlineLevel', 'shortDescription', 'longDescription','classes'];
+  var hardCoded = ['rowNumber','label','id','parent','outlineNumber','outlineLevel','notes','shortDescription', 'longDescription','classes'];
 
   var uno =[];
 
@@ -182,7 +182,8 @@ function addElement(XML,target,files,counter,row,uno,parent,result){
   result[0][row - 2 ] = {title:target.Title, id:strippedID, label:target.Title, outlinenumber:outline, outlinelevel:outlineLevel, parent:parent.id,classes:classes }; //putting the calculated metadata as the object in result array
   result[1][row - 2 ] = {title:target.Title, id:strippedID, label:target.Title, outlinenumber:outline, outlinelevel:outlineLevel, parent:parent.id,classes:classes }; //putting the calculated metadata as the object in result array
   getShort(files,target,row,uno.indexOf('shortdescription') + 4,result);
-  getText(files,target,row,uno.indexOf('longdescription') + 4,result);
+  getText(files,target,row,uno.indexOf('longdescription') + 4,result,'longdescription');
+  getText(files,target,row,uno.indexOf('longdescription') + 4,result,'notes');
   var out = outline.substr(0,outline.lastIndexOf('-'));//calculating the parent's outline number
   if(counter.length === 1){//if the target is first child, sets the outlinenumber to 0 which is Map's outline number
     out = '0';
@@ -330,11 +331,13 @@ function getShort(files,target,row,column,result){
   }
 }
 
-function getText(files,target,row,column,result){
+function getText(files,target,row,column,result,columnName){//"columnName" can be 'longdescription' or 'notes'. Based on that the function
+//will read content.rtf file or notes.rtf file and puts it in the apporperiate column in result variable
   if(target.UUID){
     const UUID = target.UUID;
-    var path = files.substr(0,files.lastIndexOf('/'))+ '/Files/Data/' + UUID +'/content.rtf';//building address of the content.rtf
-
+    const values = {longdescription:'content.rtf',notes:'notes.rtf'};
+    var path = files.substr(0,files.lastIndexOf('/'))+ '/Files/Data/' + UUID + '/' + values[columnName];//building address of the content.rtf
+    // console.log(target.Title,path)
     if (fs.existsSync(path)) {//if the content.rtf exests
       var text = fs.readFileSync(path).toString('utf-8');//This line reads the content.rtf
       var first = text.indexOf("nisusfilename"); //getting rid of the image part
@@ -373,8 +376,8 @@ function getText(files,target,row,column,result){
 
               .replace('\n*','')
               .replace('*\n','');
-      result[0][row - 2].longdescription = text;
-      result[1][row - 2].longdescription = text;
+      result[0][row - 2][columnName] = text;
+      result[1][row - 2][columnName] = text;
 
     }
   }
