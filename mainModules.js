@@ -7,6 +7,7 @@ var modules = require('./scrivModules');
 
 function main(f,checker,render,noAnchor) {//This function builds the desirable xml format for the other functions, Then calls the needed functions
   //creaete excel file, story.html file, index.html file, map.css file and also the function to find the unos with duplicate ids
+  //if checker is 'yes' the excel file will be created. otherwise the function just returns the result array
   var n = f.lastIndexOf('/');
   var res = f.substr(n, f.length);
   f = f + res+'x';

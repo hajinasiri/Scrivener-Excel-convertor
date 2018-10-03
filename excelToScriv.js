@@ -81,7 +81,8 @@ function getKeywords (excel){ //makes an object of all the classes and returns t
   var rows = excel[0].data;//This lines puts all the rows in "rows" variable
   rows.forEach(function(row,index){//goes through each row
     if(row[8] && index ){//skips the row 0 which is the row that contains column titles
-      classes = row[8];
+      var classesIndex = rows[0].indexOf('classes');
+      classes = row[classesIndex];
       classes = classes.split(' ');
       classes.forEach(function(element){
         if(element && !(element in keywords)){
@@ -193,11 +194,14 @@ function clean(text){//cleans the text from all the unwanted characters added by
 
 function buildBinderItem(row,rows,index){
   var binderItem = '';
-
+  var synopsisIndex = rows[0].indexOf('shortDescription');
+  var contentIndex = rows[0].indexOf('longDescription');
+  var notesIndex = rows[0].indexOf('notes');
+  console.log(contentIndex);
   if(rows[index - 1][5] !=='outline' && row[5] > rows[index - 1 ][5]){
     binderItem += '\n<Children>';
   }
-  for(i=0;i<row[5] + 2;i++){
+  for(i=0;i<row[5] + 2;i++){//creating the space before "<BinderItem..." according to outline level
     binderItem += ' '
   }
   binderItem += '\n<BinderItem UUID="' + index + '" ';
@@ -205,11 +209,14 @@ function buildBinderItem(row,rows,index){
   if (!fs.existsSync(content)) {//if the content folder does not exist
     fs.mkdirSync(content ); //creates the folder with row index as UUID for putting content.rtf and synopsis
   }
-  if(row[6]){
-    writeFile(content+'/synopsis.txt', row[6]);//writes the synopsis file
+  if(row[synopsisIndex]){
+    writeFile(content+'/synopsis.txt', row[synopsisIndex]);//writes the synopsis file
   }
-  if(row[7]){
-    writeFile(content+'/content.rtf',row[7]);//writes the content.rtf file
+  if(row[contentIndex]){
+    writeFile(content+'/content.rtf',row[contentIndex]);//writes the content.rtf file
+  }
+  if(notesIndex > -1, row[notesIndex]){
+    writeFile(content+'/notes.rtf',row[notesIndex]);//writes the notes to content.rtf file
   }
   if(rows[index + 1] && row[5]<rows[index + 1][5]){//if outline number of this row is smaller than the next one's
     binderItem += 'Type="Folder"';
