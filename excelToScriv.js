@@ -255,7 +255,7 @@ function buildUnoKeywords(rows,row,keywords){
   var keyStr = '';
   var keyIndex = rows[0].indexOf('classes')
 
-  if(row[8]){
+  if(row[keyIndex]){
     var classes = row[keyIndex];
     classes = classes.split(' ');
     keyStr = '\n<Keywords>';
