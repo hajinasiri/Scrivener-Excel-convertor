@@ -129,7 +129,7 @@ function buildMap(excel,keywords){
       mapStr += '\n' +buildBinderItem(row,rows,index);//adding the binderItem string to it
       mapStr += '\n  <Title>' + row[1]+ '</Title>';
       mapStr += buildMetaData(row,rows);
-      mapStr += buildUnoKeywords(row,keywords);
+      mapStr += buildUnoKeywords(rows,row,keywords);
       mapStr += buildClose(row,rows,index);
     }
 
@@ -251,11 +251,12 @@ function buildMetaData(row,rows){
   return metaStr
 }
 
-function buildUnoKeywords(row,keywords){
+function buildUnoKeywords(rows,row,keywords){
   var keyStr = '';
+  var keyIndex = rows[0].indexOf('classes')
 
   if(row[8]){
-    var classes = row[8];
+    var classes = row[keyIndex];
     classes = classes.split(' ');
     keyStr = '\n<Keywords>';
     classes.forEach(function(element){
