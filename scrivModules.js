@@ -50,7 +50,7 @@ function createExcel(files,XML,checker,render){//fetches data from XML, Uses add
   if(render){//the following lines create render ready excel file
     var workbook2 = new excel4node.Workbook();
     var render = workbook2.addWorksheet('Structure');//Setting the sheet name
-    const hardCoded = ['rowNumber','label','id','parent','classes','subtitle','unoFrom','unoTo','render','symbol','location','xpos','ypos','xsize',
+    const hardCoded = ['rowNumber','label','id','parent','outlineNumber','outlineLevel','classes','subtitle','unoFrom','unoTo','render','symbol','location','xpos','ypos','xsize',
     'ysize','xoffset','yoffset'];
 
     hardCoded.forEach(function(element,index){//This loop puts all the uno metaData Titles from uno array into the excel file
