@@ -141,14 +141,19 @@ function getMeta(index,rows,match){
   if(index > 0){
     var row = rows[index];
     var columns = rows[0];
-    for(i=8; i<row.length; i++){
+    for(i=0; i<row.length; i++){
       // if(match[columns[i].toLowerCase()] !== undefined){
 
       // console.log(rows[index][i],match[columns[i].toLowerCase()]);
 
       // }
 
-      // rows[index][i] = match[columns[i].toLowerCase()];
+      if(columns[i] in {'rowNumber':1,'label':1,'id':1,'parent':1,'outlineNumber':1,'outlineLevel':1,'notes':1,'shortDescription':1,'longDescription':1,'slideURL':1}){
+      }else{
+        rows[index][i] = match[columns[i].toLowerCase()];
+      }
+
+
     }
   }
   return rows
@@ -162,7 +167,6 @@ function checkMatch(index,match,columnDescription,l,rows){//finds the matching u
   if(excelUno){excelUno = clean(excelUno)}
   var scrivUno = match[columnDescription];
   // console.log(columnDescription,columnNumber);
-  if(columnDescription === 'slideurl'){console.log(row[columnNumber])}
   if(scrivUno){scrivUno = clean(scrivUno)};
 
 
