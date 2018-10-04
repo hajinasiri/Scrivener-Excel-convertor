@@ -56,11 +56,11 @@ function main(){
 }
 
 function writeFile(path,text){//This function writes the text to the path of the file
-      fs.writeFile(path, text, function(err) {//writes the text to scrivx file
-      if(err) {
-          return console.log(err);
-      }
-    });
+  fs.writeFile(path, text, function(err) {//writes the text to scrivx file
+    if(err) {
+        return console.log(err);
+    }
+  });
 }
 
 function buildCustomMetaDataSettings(excel){
@@ -148,7 +148,7 @@ function getMeta(index,rows,match){
 
       // }
 
-      rows[index][i] = match[columns[i].toLowerCase()];
+      // rows[index][i] = match[columns[i].toLowerCase()];
     }
   }
   return rows
@@ -161,7 +161,8 @@ function checkMatch(index,match,columnDescription,l,rows){//finds the matching u
   var excelUno = row[columnNumber];
   if(excelUno){excelUno = clean(excelUno)}
   var scrivUno = match[columnDescription];
-  scrivUno = match[columnDescription];
+  // console.log(columnDescription,columnNumber);
+  if(columnDescription === 'slideurl'){console.log(row[columnNumber])}
   if(scrivUno){scrivUno = clean(scrivUno)};
 
 
@@ -197,7 +198,6 @@ function buildBinderItem(row,rows,index){
   var synopsisIndex = rows[0].indexOf('shortDescription');
   var contentIndex = rows[0].indexOf('longDescription');
   var notesIndex = rows[0].indexOf('notes');
-  console.log(contentIndex);
   if(rows[index - 1][5] !=='outline' && row[5] > rows[index - 1 ][5]){
     binderItem += '\n<Children>';
   }
