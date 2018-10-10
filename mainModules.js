@@ -157,7 +157,9 @@ function addToXML(target,counter,XML){
   }
   MetaData = {CustomMetaData:MetaData};
   var keyStr = str;
-  str += ' ={Title:"'+target.Title[0]+'",UUID:"'+target.$.UUID+'"}';//Setting Title and UUID for each children
+  var title = target.Title[0];
+  title = title.replace(/\n/g, '');//removing carriages from Title
+  str += ' ={Title:"'+title+'",UUID:"'+target.$.UUID+'"}';//Setting Title and UUID for each children
 
   eval(str);
 

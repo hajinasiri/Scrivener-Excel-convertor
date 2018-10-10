@@ -1,0 +1,117 @@
+<script type="text/javascript" src="/js/jquery.js"></script>
+<script type="text/javascript" src="/js/jquery.form.js"></script>
+
+
+<!--  Bootstrap Stuff -->
+
+<link type="text/css" href="/stylesheets/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="/stylesheets/bootstrap-theme.min.css">
+<link type="text/css" href="/stylesheets/style.css" rel="stylesheet">
+<script>
+    //location of folder for these files
+    var baseUrl = {{{baseUrl}}};
+</script>
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        {{!--<div class="form-row">--}}
+            <div class="col-sm-4" style="background-color:lavender;">
+                <div id="myMessage"></div>
+                <form id="uploadFile" role="form" action="/importSpread" method="POST" enctype="multipart/form-data">
+                    <div class="form-row">
+                        
+                        {{!--<div class="col">--}}
+                            <div id="selFile">
+                                Select an xlsx file to upload to the server:
+                            </div>
+                            <div class="file-upload btn btn-primary" id="uploadButton">
+                                <span>Choose xlsx File</span>
+                                <input id="uploadBtn" action="/importSVG/" type="file" name="myFile" class="upload" accept=".xlsx" />
+
+                            </div>
+
+                            <button type="submit" class="btn btn-success">
+                        Upload xlsx file
+                    </button>
+                       {{!--</div>--}}
+                   {{!--</div>--}}
+                </form>
+
+            </div>
+            <!-- 1st column -->
+           
+           
+        </div>
+        <!-- row -->
+
+        <div id="resultMessage" class="jumbotron">
+
+        </div>
+    </div>
+</nav>
+<script>
+/* global $,baseUrl */
+    //# sourceURL=importSpread.hbs
+    // wait for the DOM to be loaded
+    $(document).ready(function() {
+        // bind 'uploadFile' for spreadsheet import and provide a simple callback function
+        $('#uploadFile').ajaxForm(function(e) {
+            console.log(e);
+            var message = "<h1>Cool.</h1><p>Stuff got imported to the database.</p>"; //default successful result message after uploading spreadsheet to server
+            if (e.hasOwnProperty("status") && e.hasOwnProperty("msg")) {
+                if (e.status === "error") {
+                    message = "<h1>Error.</h1><p>" + e.msg + "</p>";
+                } 
+            }
+            $("#resultMessage").html(message);
+        });
+        document.getElementById("uploadBtn").onchange = function() {
+            $("#myMessage").html("<p>You selected the file:</p><p><b>" + this.value + "</b></p><p>Now click the green upload button and we're in business.</p>");
+            var re = /\/(.+)\/(?:importSpread)(?:\/)*/i;
+            var found = baseUrl.match(re); //found[1] has the path I need less the "importSpread" text.
+            if (found && found !== undefined) {
+                //I will change any "/" in the string in found[1] to slshslash. This is so it will only show up as one parameter on the server in the express
+                //req.params.path
+                if (found.length) {
+                    var path = found[1];
+                    path !== undefined ? path = path.replace(/\//g, "slshslash") : path = null;
+                    document.getElementById("uploadFile").action = "/importSpread/" + path; // document.getElementById("collection").value; //call this with our folder.
+                    //document.getElementById("uploadSVG").action = "/importSVG/" + document.getElementById("collection").value; //call this with our folder.
+                }
+            }
+        };
+
+        //document.getElementById("collection").onchange = function() {};
+
+        // bind 'uploadSVG' for svg import and provide a simple callback function
+        $('#uploadSVG').ajaxForm(function() {
+            $("#resultMessage").html("<h1>SVG Upload Happened.</h1>");
+        });
+        document.getElementById("uploadSVGBtn").onchange = function() {
+            $("#mySvgMessage").html("<p>You selected the file:</p><p><b>" + this.value + "</b></p><p>Now click the green upload button and we're in business.</p>");
+        };
+    });
+</script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<style>
+    .file-upload {
+        position: relative;
+        overflow: hidden;
+        margin: 10px;
+    }
+
+    .file-upload input.upload {
+        position: absolute;
+        top: 0;
+        right: 0;
+        margin: 0;
+        padding: 0;
+        font-size: 20px;
+        cursor: pointer;
+        opacity: 0;
+        filter: alpha(opacity=0);
+    }
+
+    #uploadFile {
+        line-height: 28px;
+    }
+</style>
