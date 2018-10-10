@@ -594,9 +594,14 @@ function createStory(finalResult,f,UUID,noAnchor){
           "'> <button aria-expanded='false'><i class='icon-right-dir'></i><i class='icon-down-dir'></i>"+element.title+"</row></button></h"+
           element.outlinelevel+"><div hidden>";
         }else{
-
+          let theLink;
+          if(element.slideurl && element.slideurl.length > 2){
+            theLink = "'" + "#/?" + element.slideurl + "'";
+          }else{
+            theLink = "'" + "#/?+++&unoInfo=" + element.id + "'"
+          }
           storyData += "<h"+element.outlinelevel+" class='storyHead storyHead"+element.outlinelevel.toString().padStart(2, '0')+
-          "'> <a href='#/?+++&unoInfo=" + element.id + "' class=\"slide\"> <button aria-expanded='false'><i class='icon-right-dir'></i><i class='icon-down-dir'></i>"
+          "'> <a href=" + theLink + " class='slide'> <button aria-expanded='false'><i class='icon-right-dir'></i><i class='icon-down-dir'></i>"
           +element.title+"</row></button></a></h" + element.outlinelevel+"><div hidden>";
         }
       }else{
