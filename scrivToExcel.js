@@ -28,6 +28,6 @@ console.log(`Watching for file changes on ${f}`);
 
 fs.watchFile(f, (curr, prev) => {
   console.log(`${f} file Changed`);
-  mainModules.main(f,'yes');
+  mainModules.main(f,'yes',render,noAnchor);
 });
 
